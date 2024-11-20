@@ -18,28 +18,38 @@ form.addEventListener('submit', (e) => {
 
     const fd = new FormData(form);
 
-    
-    const obj = Object.fromEntries(fd.entries());
-    dataArray.push(obj); 
+    const imageFile = fd.get('image');
 
-    console.log(dataArray); 
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        const obj = {
+            name: fd.get('name'),
+            job: fd.get('job'),
+            image: event.target.result, 
+        };
+        dataArray.push(obj);
+        console.log(dataArray);
 
-    // Optional: Add a card for the new person
-    const cardList = document.getElementById("card-list");
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
+        const cardList = document.getElementById("card-list");
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
             <div class="card-about">
-                <img src="images/${obj.image}" alt="Founder 1">
+                <img src="${obj.image}" alt="${obj.name}">
                 <h3>${obj.name}</h3>
                 <p>${obj.job}</p>
             </div>
-    `;
-    cardList.appendChild(card);
+        `;
+        cardList.appendChild(card);
 
-    // Hide form after submission
-    document.getElementById("form").style.display = "none";
+        document.getElementById("form").style.display = "none";
 
-    // Clear form inputs
-    form.reset();
+        form.reset();
+    };
+
+    if (imageFile) {
+        reader.readAsDataURL(imageFile);
+    } else {
+        alert('Please select an image to upload.');
+    }
 });
