@@ -1,43 +1,179 @@
 * {
-    box-sizing: content-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-#all{
-    display: flex;
-}
-.formule{
-    padding: 20px;
-    border: 5px solid #f38484;
 
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
 }
-.add-button{
-    background-color: green;
+
+#all {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.formule {
+    padding: 20px;
+    width: 60%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cards {
+    width: 40%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-button {
+    background-color: #28a745;
     width: 250px;
-    height: 30px;
+    height: 40px;
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 25px;
     font-size: 15px;
+    font-weight: bold;
     cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
 }
-#form{
+
+.add-button:hover {
+    background-color: #218838;
+}
+
+#form {
     display: flex;
     flex-direction: column;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
 }
-.card-about {
-    background-color: rgba(129, 77, 8, 0.136);
-    color : black;
+
+#form label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+#form input[type="text"],
+#form input[type="file"] {
+    border: 1px solid #ddd;
     border-radius: 10px;
-    width : 300px;
+    padding: 12px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+#form input[type="text"]:focus,
+#form input[type="file"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+#form button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#form button[type="submit"]:active {
+    background-color: #00408b;
+}
+
+.card-about {
+    background-color: rgba(129, 77, 8, 0.1);
+    color: black;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 300px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin-bottom: 20px;
-    cursor : pointer;
-}
-.card-about img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.card-about:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-about img {
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.security,
+.cuisinier,
+.formateur {
+    display: flex;
+    gap: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #f8f8f8;
+    margin: 20px 0; /* Adds spacing at the top and bottom */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.security:hover,
+.cuisinier:hover,
+.formateur:hover {
+    border-color: #007bff;
+    box-shadow: 0 6px 10px rgba(0, 123, 255, 0.1);
+    transition: all 0.3s;
+}
+
+/* Title Styling */
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px; /* Space below the title */
+    text-align: left; /* Adjust alignment if needed */
+}
+.card-list{
+    display: flex;
+    flex-direction: column;
+}
+.card-about.is-dragging {
+    background-color: orangered;
+    color: white;
+}
